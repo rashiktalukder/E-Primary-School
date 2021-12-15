@@ -8,15 +8,18 @@ $(document).ready(function () {
 function loadDataTable() {
     dataTable = $('#DT_load').DataTable({
         "ajax": {
-            "url": "/api/employee",
+            "url": "/Employees/GetAll",
             "type": "GET",
             "datatype": "json"
         },
         //columns to display
         "columns": [
-            { "data": "name", "width": "30%" },
-            { "data": "author", "width": "30%" },
-            { "data": "isbn", "width": "30%" },
+            { "data": "userId", "width": "20%" },
+            { "data": "empName", "width": "20%" },
+            { "data": "empEmail", "width": "20%" },
+            { "data": "empPhoneNumber", "width": "20%" },
+            { "data": "empSalary", "width": "20%" },
+            { "data": "userType", "width": "20%" },
 
             {
                 "data": "id",
