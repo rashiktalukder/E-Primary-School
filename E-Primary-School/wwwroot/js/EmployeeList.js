@@ -1,6 +1,4 @@
-﻿
-var dataTable;
-
+﻿var DataTable;
 $(document).ready(function () {
     loadDataTable();
 });
@@ -12,7 +10,6 @@ function loadDataTable() {
             "type": "GET",
             "datatype": "json"
         },
-        //columns to display
         "columns": [
             { "data": "userId", "width": "20%" },
             { "data": "empName", "width": "20%" },
@@ -33,7 +30,7 @@ function loadDataTable() {
                 <a class='btn btn-danger text-white'
                             style='cursor:pointer; width:100px;'>Delete</a>
                             </div> `;
-                }, "width": "30%"
+                }, "width": "50%"
             }
         ], "language": {
             "emptyTable": "no data found"
