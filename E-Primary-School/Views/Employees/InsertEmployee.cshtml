@@ -1,0 +1,60 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<br />
+<h2 class="text-info">Create new Employee</h2> <br />
+<div class = "border container" style="padding: 30px;">
+    <form method = "post">
+        <div class = "form-group row">
+            <div class = "col-3">
+                <label for = "empName" >Name</label>
+            </div>
+            <div class = "col-6">
+                <input id= "empName" class = "form-control" />
+            </div>
+        </div>
+         <div class = "form-group row">
+            <div class = "col-3">
+                <label for = "email">Email</label>
+            </div>
+            <div class = "col-6">
+                <input id="email" class = "form-control" />
+            </div>
+         </div>
+
+        <div class = "form-group row">
+            <div class = "col-3">
+                <label for = "empPhoneNumber">Phone Number</label>
+            </div>
+            <div class = "col-6">
+                <input id="empPhoneNumber" class = "form-control" />
+            </div>
+        </div> 
+        <div class = "form-group row">
+            <div class = "col-3">
+                <label for = "empSalary">Salary</label>
+            </div>
+            <div class = "col-6">
+                <input id="empSalary" class = "form-control" />
+            </div>
+        </div> 
+        <div class = "form-group row">
+            <div class = "col-3">
+                <label for = "empUserType">UserType</label>
+            </div>
+            <div class = "col-6">
+             <select id="empUserType" class="form-control">
+             <option selected>Choose...</option>
+             <option value = "1">Teacher</option>
+             <option value = "2">Record Kepper</option>
+             </select>
+             </div>
+             </div>
+        <div class = "form-group row">
+           <button class="btn btn-info form-control">
+               Submit
+           </button>
+        </div>
+    </form>
+
+</div>

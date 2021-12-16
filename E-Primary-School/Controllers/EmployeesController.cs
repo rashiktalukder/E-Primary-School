@@ -20,6 +20,10 @@ namespace E_Primary_School.Controllers
         {
             return View();
         }
+        public IActionResult InsertEmployee()
+        {
+            return View(Employee);
+        }
         #region API Calls
         [HttpGet]
         public async Task<IActionResult> GetAll()
