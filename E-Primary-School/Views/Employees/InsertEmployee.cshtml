@@ -1,23 +1,27 @@
 ﻿@model E_Primary_School.Models.Employee
 
 <br />
-<h2 class="text-info">Create new Employee</h2> <br />
+<h2 class="text-info"> Create new Employee</h2>
 <div class = "border container" style="padding: 30px;">
     <form method = "post">
+
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
         <div class = "form-group row">
             <div class = "col-3">
                 <label asp-for = "userId" >UserId</label>
             </div>
             <div class = "col-6">
                 <input asp-for= "userId" class = "form-control" />
+                <span asp-validation-for="userId" class="text-danger"></span>
             </div>
         </div> 
         <div class = "form-group row">
             <div class = "col-3">
-                <label asp-for = "empName" ></label>
+                <label asp-for = "empName" >Name</label>
             </div>
             <div class = "col-6">
                 <input asp-for= "empName" class = "form-control" />
+                <span asp-validation-for="empName" class="text-danger"></span>
             </div>
         </div>
          <div class = "form-group row">
@@ -26,6 +30,7 @@
             </div>
             <div class = "col-6">
                 <input asp-for="empEmail" class = "form-control" />
+                <span asp-validation-for="empEmail" class="text-danger"></span>
             </div>
          </div>
 
@@ -35,6 +40,7 @@
             </div>
             <div class = "col-6">
                 <input asp-for="empPhoneNumber" class = "form-control" />
+                <span asp-validation-for="empPhoneNumber" class="text-danger"></span>
             </div>
         </div> 
         <div class = "form-group row">
@@ -43,11 +49,13 @@
             </div>
             <div class = "col-6">
                 <input asp-for="empSalary" class = "form-control" />
+                <span asp-validation-for="empSalary" class="text-danger"></span>
             </div>
         </div> 
         <div class = "form-group row">
             <div class = "col-3">
                 <label asp-for = "userType">UserType</label>
+                <span asp-validation-for="userType" class="text-danger"></span>
             </div>
             <div class = "col-6">
              <select asp-for="userType" class="form-control">
@@ -55,6 +63,7 @@
              <option value = "1">Teacher</option>
              <option value = "2">Record Kepper</option>
              </select>
+             <span asp-validation-for="userType" class="text-danger"></span>
              </div>
              </div>
         <div class = "form-group row">
@@ -65,3 +74,6 @@
     </form>
 
 </div>
+@section Scripts{ 
+<partial name="_ValidationScriptsPartial" />
+}

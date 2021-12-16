@@ -1,6 +1,7 @@
 ﻿using E_Primary_School.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace E_Primary_School.Controllers
@@ -20,8 +21,38 @@ namespace E_Primary_School.Controllers
         {
             return View();
         }
-        public IActionResult InsertEmployee()
+        public IActionResult InsertEmployee(int ? id)
         {
+            Employee employee = new Employee();
+            if(id == null)
+            {
+                return View(Employee);
+            }
+            employee = _db.Employees.FirstOrDefault(x => x.Id == id);
+            if(employee == null)
+            {
+                return NotFound();
+            }
+            return View(Employee);
+        }
+       
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult InsertEmployee(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                if (Employee.Id == 0)
+                {
+                    _db.Employees.Add(employee);
+                }
+                else
+                {
+                    _db.Employees.Update(employee);
+                }
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
             return View(Employee);
         }
         #region API Calls
@@ -30,18 +61,19 @@ namespace E_Primary_School.Controllers
         {
             return Json(new { data = await _db.Employees.ToListAsync() });
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult InsertEmployee(Employee employee)
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
         {
-            if (ModelState.IsValid)
+            var employyeFromDb = await _db.Employees.FirstOrDefaultAsync(x => x.Id == id);
+            if(Equals(employyeFromDb, null))
             {
-                _db.Employees.Add(employee);
-              
-                _db.SaveChanges();
+                return Json(new { success = false, message = "error " });
             }
-            return View(Employee);
+            _db.Employees.Remove(employyeFromDb);
+            await _db.SaveChangesAsync();
+            return Json(new { success = true, message = "Successfully Deleted" });
         }
+        #endregion
     }
-    #endregion
+
 }
