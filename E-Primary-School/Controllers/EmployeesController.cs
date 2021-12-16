@@ -1,6 +1,7 @@
 ﻿using E_Primary_School.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace E_Primary_School.Controllers
@@ -9,7 +10,7 @@ namespace E_Primary_School.Controllers
     {
         private readonly ApplicationDbContext _db;
         [BindProperty]
-        public Employee Employee { get; set; }
+        public Employee employee { get; set; }
 
         public EmployeesController(ApplicationDbContext db)
         {
@@ -20,10 +21,59 @@ namespace E_Primary_School.Controllers
         {
             return View();
         }
+        public IActionResult InsertEmployee(int? id)
+        {
+            
+            Employee employee = new Employee();
+            if(id== null)
+            {
+                //Create
+                return View(employee);
+
+            }
+            //update
+            employee = _db.Employees.FirstOrDefault(x => x.Id == id);
+            if(employee == null)
+            {
+                return NotFound();
+            }
+            return View(employee);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult InsertEmployee()
         {
-            return View(Employee);
+
+            Employee employee = new Employee();
+            if (ModelState.IsValid)
+            {
+                if(employee.Id==0)
+                {
+                    //Create
+                    _db.Employees.Add(employee);
+                }
+                else
+                {
+                    _db.Employees.Update(employee);
+                }
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+                
+                return View(employee);
+
+            }
+            /*//update
+            employee = _db.Employees.FirstOrDefault(x => x.Id == id);
+            if (employee == null)
+            {
+                return NotFound();
+            }*/
+            return View(employee);
         }
+
+
+
         #region API Calls
         [HttpGet]
         public async Task<IActionResult> GetAll()

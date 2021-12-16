@@ -1,0 +1,116 @@
+﻿
+@model E_Primary_School.Models.Students
+
+<br />
+
+<h2 class="text-info">@(Model.Id!=0 ? "Edit" : "Create") Students</h2>
+
+<br />
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        @if(Model.Id!=0)
+        {
+            <input type="hidden" asp-for="Id"/>
+        }
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+       @* userId*@
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="userId"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="userId" class="form-control"/>
+                <span asp-validation-for="userId" class="text-danger"></span>
+            </div>
+        </div>
+
+        @*stdName*@
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="stdName"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="stdName" class="form-control"/>
+                <span asp-validation-for="stdName" class="text-danger"></span>
+            </div>
+        </div>
+
+        @*stdPassword*@
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="stdPassword"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="stdPassword" class="form-control"/>
+                <span asp-validation-for="stdPassword" class="text-danger"></span>
+            </div>
+        </div>
+
+        @*stdEmail*@
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="stdEmail"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="stdEmail" class="form-control"/>
+                <span asp-validation-for="stdEmail" class="text-danger"></span>
+            </div>
+        </div>
+
+        @*stdPhone*@
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="stdPhone"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="stdPhone" class="form-control"/>
+                <span asp-validation-for="stdPhone" class="text-danger"></span>
+            </div>
+        </div>
+
+        @*stdAddress*@
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="stdAddress"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="stdAddress" class="form-control"/>
+                <span asp-validation-for="stdAddress" class="text-danger"></span>
+            </div>
+        </div>
+
+        @*stdSection*@
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="stdSection"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="stdSection" class="form-control"/>
+                <span asp-validation-for="stdSection" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+               <button type="submit" class="btn btn-primary form-control">
+
+                   @(Model.Id!=0 ? "Update" : "Create")
+
+               </button>
+            </div>
+            <div class="col-3">
+                <a asp-action="Index" class="btn btn-success form-control">Go to list</a>
+            </div>
+        </div>
+
+    </form>
+</div>
