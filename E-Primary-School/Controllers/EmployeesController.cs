@@ -30,6 +30,13 @@ namespace E_Primary_School.Controllers
         {
             return Json(new { data = await _db.Employees.ToListAsync() });
         }
+        [HttpPost]
+        public IActionResult PostEmployee(Employee employee)
+        {
+            _db.Employees.Add(employee);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
     #endregion
 }
