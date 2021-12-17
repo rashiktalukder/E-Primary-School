@@ -23,17 +23,17 @@ namespace E_Primary_School.Controllers
         }
         public IActionResult InsertEmployee(int ? id)
         {
-            Employee employee = new Employee();
+            employee = new Employee();
             if(id == null)
             {
-                return View(Employee);
+                return View(employee);
             }
             employee = _db.Employees.FirstOrDefault(x => x.Id == id);
             if(employee == null)
             {
                 return NotFound();
             }
-            return View(Employee);
+            return View(employee);
         }
        
         [HttpPost]
@@ -42,7 +42,7 @@ namespace E_Primary_School.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (Employee.Id == 0)
+                if (employee.Id == 0)
                 {
                     _db.Employees.Add(employee);
                 }
@@ -53,7 +53,7 @@ namespace E_Primary_School.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(Employee);
+            return View(employee);
         }
 
 
