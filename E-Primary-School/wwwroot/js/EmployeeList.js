@@ -15,6 +15,7 @@ function loadDataTable() {
             { "data": "empName", "width": "20%" },
             { "data": "empEmail", "width": "20%" },
             { "data": "empPhoneNumber", "width": "20%" },
+            { "data": "empGender", "width": "20%" },
             { "data": "empSalary", "width": "20%" },
             { "data": "userType", "width": "20%" },
 

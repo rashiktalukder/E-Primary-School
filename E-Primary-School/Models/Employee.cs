@@ -15,7 +15,11 @@ namespace E_Primary_School.Models
         [Required]
         public string empPhoneNumber { get; set; }
         [Required]
+        public string empGender { get; set; }
+        [Required]
         public int empSalary { get; set; }
+        [Required]
+        public string password { get; set; }
         [Required]
         public int userType { get; set; }
     }
