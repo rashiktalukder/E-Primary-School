@@ -1,6 +1,7 @@
 ﻿var DataTable;
 $(document).ready(function () {
     loadDataTable();
+    
 });
 
 function loadDataTable() {
@@ -18,7 +19,7 @@ function loadDataTable() {
             { "data": "stdEmail", "width": "20%" },
             { "data": "stdPhone", "width": "20%" },
             { "data": "stdAddress", "width": "20%" },
-            { "data": "stdSection", "width": "20%" },
+            { "data": "stdSection", "width": "5%" },
 
             {
                 "data": "id",
@@ -39,5 +40,32 @@ function loadDataTable() {
             "emptyTable": "no data found"
         },
         "width": "100%"
+    });
+}
+
+function Delete(url) {
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+    }).then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                type: "DELETE",
+                url: url,
+                success: function (data) {
+                    if (data.success) {
+                        toastr.success(data.message);
+                        dataTable.ajax.reload();
+                    }
+                    else {
+                        toastr.error(data.message);
+                        
+                    }
+                }
+            });
+        }
     });
 }

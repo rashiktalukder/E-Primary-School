@@ -80,9 +80,16 @@ namespace E_Primary_School.Controllers
             {
                 return Json(new { success = false, message = "Error while deleting" });
             }
-            _db.Students.Remove(stdFromDb);
-            await _db.SaveChangesAsync();
-            return Json(new { success = true, message = "Deleted successfully" });
+            else
+            {
+                _db.Students.Remove(stdFromDb);
+                await _db.SaveChangesAsync();
+                RedirectToAction("Index");
+                return Json(new { success = true, message = "Deleted successfully" });
+                
+                
+            }
+            
         }
 
         #endregion
